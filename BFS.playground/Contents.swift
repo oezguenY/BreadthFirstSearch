@@ -74,20 +74,20 @@ struct BinarySearchTree<T: Comparable> {
     }
     
     func bfs() -> [Node<T>?] {
-        var node = self.root
+        var node = self.root // 10
         var data = [Node<T>?]()
         var queue = [Node<T>?]()
-        queue.append(node)
+        queue.append(node) // [10]
         
         while !queue.isEmpty {
             // FIFO Approach; The first element in the array is removed
-            node = queue.removeFirst()
-            data.append(node)
+            node = queue.removeFirst() // 10, 6, 15, 3, 8
+            data.append(node) // [10], [10,6], [10,6,15], [10,6,15,3],                         [10,6,15,3,8], [10,6,15,3,8,20]
             if let leftNode = node?.left {
-                queue.append(leftNode)
+                queue.append(leftNode) // [6], [15,3]
             }
             if let rightNode = node?.right {
-                queue.append(rightNode)
+                queue.append(rightNode) // [6,15], [15,3,8], [3,8,20]
             }
         }
         // check whether the sequence of the array is correct
@@ -96,6 +96,23 @@ struct BinarySearchTree<T: Comparable> {
         return data
     }
 }
+
+/*
+ We are building the following tree:
+ 
+ 
+ Sequence                 Tree
+     1 ->                  10
+     2 ->         6                  15
+     3 ->   3           8                   20
+ 
+ 
+ So, the printed out array has to be:
+->         [10,6,15,3,8,20]
+ 
+ We are traversing the tree first horizontally, before we go vertically
+ 
+ */
 
 
 var bst = BinarySearchTree<Int>()
