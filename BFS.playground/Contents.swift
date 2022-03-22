@@ -80,6 +80,7 @@ struct BinarySearchTree<T: Comparable> {
         queue.append(node)
         
         while !queue.isEmpty {
+            // FIFO Approach; The first element in the array is removed
             node = queue.removeFirst()
             data.append(node)
             if let leftNode = node?.left {
@@ -89,6 +90,7 @@ struct BinarySearchTree<T: Comparable> {
                 queue.append(rightNode)
             }
         }
+        // check whether the sequence of the array is correct
         let nodeValues = data.compactMap { $0?.value }
         print(nodeValues)
         return data
