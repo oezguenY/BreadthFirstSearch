@@ -82,7 +82,7 @@ struct BinarySearchTree<T: Comparable> {
         while !queue.isEmpty {
             // FIFO Approach; The first element in the array is removed
             node = queue.removeFirst() // 10, 6, 15, 3, 8
-            data.append(node) // [10], [10,6], [10,6,15], [10,6,15,3],                         [10,6,15,3,8], [10,6,15,3,8,20]
+            data.append(node) // [10], [10,6], [10,6,15], [10,6,15,3] ,[10,6,15,3,8], [10,6,15,3,8,20]
             if let leftNode = node?.left {
                 queue.append(leftNode) // [6], [15,3]
             }
